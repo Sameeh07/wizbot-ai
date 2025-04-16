@@ -54,7 +54,7 @@ from doctor_voice import text_to_speech_with_elevenlabs
 # System prompt for the doctor bot
 system_prompt = (
     "You are a professional doctor. Always respond with empathy and medical knowledge. "
-    "Keep answers short (1-2 sentences), clear, and friendly."
+    "Keep answers short , clear, and friendly."
 )
 
 def process_input(audio_filepath, text_input):
@@ -76,7 +76,7 @@ def process_input(audio_filepath, text_input):
     from groq import Groq
     client = Groq(api_key=os.environ.get("GROQ_API_KEY"))
     chat = client.chat.completions.create(
-        model="llama-3.3-70b",
+        model="llama-3.3-70b-versatile",
         messages=[
             {"role": "system", "content": system_prompt},
             {"role": "user",   "content": user_query}
