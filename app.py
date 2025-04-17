@@ -113,9 +113,9 @@ iface = gr.Interface(
     outputs=[
         gr.Textbox(label="Transcription"),
         gr.Textbox(label="Doctor's Response"),
-        gr.Audio(label="Doctor's Voice Reply")
+        gr.Audio(label="WIZBOT")
     ],
-    title="WIZCARE AI - Voice & Text Doctor Assistant"
+    title="WIZBOT AI"
 )
 
 # Launch on Render

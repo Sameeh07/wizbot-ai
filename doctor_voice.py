@@ -19,7 +19,7 @@ def text_to_speech_with_elevenlabs(input_text, output_filepath):
     client = ElevenLabs(api_key=ELEVENLABS_API_KEY)
     audio = client.generate(
         text=input_text,
-        voice="piTKgcLEGmPE4e6mEKli",  # Nicole (Legacy) voice ID
+        voice="Aria",  
         output_format="mp3_22050_32",
         model="eleven_turbo_v2"
     )
