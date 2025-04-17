@@ -46,15 +46,20 @@
 
 #http://127.0.0.1:7860
 # app.py (main entry for Render deployment)
+# app.py (main entry for Render deployment)
 import os
 import gradio as gr
+from dotenv import load_dotenv
 from patient_voice import transcribe_with_groq
-from doctor_voice import text_to_speech_with_elevenlabs
+from doctor_voice import text_to_speech_with_elevenlabs, text_to_speech_with_gtts
+
+# Load environment variables
+load_dotenv()
 
 # System prompt for the doctor bot
 system_prompt = (
     "You are a professional doctor. Always respond with empathy and medical knowledge. "
-    "Keep answers short , clear, and friendly."
+    "Keep answers short, clear, and friendly."
 )
 
 def process_input(audio_filepath, text_input):
@@ -84,7 +89,7 @@ def process_input(audio_filepath, text_input):
     )
     doctor_response = chat.choices[0].message.content
 
-    # Convert doctor response to speech
+    # Convert doctor response to speech, using ElevenLabs if key provided, else gTTS
     if os.environ.get("ELEVENLABS_API_KEY"):
         audio_out = text_to_speech_with_elevenlabs(
             input_text=doctor_response,
@@ -110,9 +115,10 @@ iface = gr.Interface(
         gr.Textbox(label="Doctor's Response"),
         gr.Audio(label="Doctor's Voice Reply")
     ],
-    title="WIZCARE AI"
+    title="WIZCARE AI - Voice & Text Doctor Assistant"
 )
 
 # Launch on Render
 port = int(os.environ.get("PORT", 7860))
 iface.launch(server_name="0.0.0.0", server_port=port)
+
