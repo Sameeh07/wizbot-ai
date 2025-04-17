@@ -49,12 +49,12 @@
 # app.py (main entry for Render deployment)
 import os
 import gradio as gr
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from patient_voice import transcribe_with_groq
 from doctor_voice import text_to_speech_with_elevenlabs, text_to_speech_with_gtts
 
-# Load environment variables
-load_dotenv()
+# # Load environment variables
+# load_dotenv()
 
 # System prompt for the doctor bot
 system_prompt = (
