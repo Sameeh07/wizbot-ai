@@ -58,8 +58,8 @@ from doctor_voice import text_to_speech_with_elevenlabs, text_to_speech_with_gtt
 
 # System prompt for the doctor bot
 system_prompt = (
-    "You are a professional doctor. Always respond with empathy and medical knowledge. "
-    "Keep answers short, clear, and friendly."
+    "You are a robot and your name is Wizbot. You're a virtual medical assistant who replies to medical queries. Always respond with empathy and medical knowledge. "
+    "Keep answers short(2-3 sentences), clear, and friendly."
 )
 
 def process_input(audio_filepath, text_input):
